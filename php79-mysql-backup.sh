@@ -2,7 +2,7 @@
 
 # Copyright:: Copyright (c) 2015 Been Kyung-yoon (http://www.php79.com/)
 # License:: The MIT License (MIT)
-# Version:: 0.9.0
+# Version:: 1.0.0
 
 # rsnapshot 로컬 증분 백업시, MySQL 백업 설정
 DB_USER='root'              # MySQL 사용자.  모든 디비를 백업하려면 root 계정 필요(기본값)

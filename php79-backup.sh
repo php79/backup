@@ -2,7 +2,7 @@
 
 # Copyright:: Copyright (c) 2015 Been Kyung-yoon (http://www.php79.com/)
 # License:: The MIT License (MIT)
-# Version:: 0.9.0
+# Version:: 1.0.0
 
 # 로컬 풀 백업 설정
 BACKUP_DIR=/backup          # 백업 보관 디렉토리
