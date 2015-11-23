@@ -4,11 +4,14 @@
 # License:: The MIT License (MIT)
 # Version:: 0.9.0
 
-# rsnapshot 로컬 증분 백업시, MySQL 백업 설정
+# rsnapshot 원격 증분 백업시, MySQL 백업 설정
 DB_USER='root'              # MySQL 사용자.  모든 디비를 백업하려면 root 계정 필요(기본값)
 DB_PASS='MySQLRootPassword' # MySQL 비밀번호.
 DB_HOST='localhost'         # MySQL 서버 주소.  별도 서버에 분리되지 않았다면 로컬 서버는 localhost 입력.
 DB_BIN='/usr/bin'           # mysql, mysqldump 실행 파일의 경로.  기본 /usr/bin , 컴파일시 /usr/local/mysql/bin 등
+
+#  주의) 본 스크립트는 rsnapshot 전용으로, 백업 실행시 현재 디렉토리에서 *sql.gz 백업을 지우고 있습니다.
+#   따라서, [로컬 풀 백업](docs/local-full-backup.md)을 원하실 경우 php79-backup.sh 를 사용해야 합니다.
 
 # 메세지/로그 - 에러
 function php79_error
@@ -38,6 +41,12 @@ fi
 # 백업 시작
 php79_info "$0 - started"
 
+# 백업 보관 디렉토리
+BACKUP_DIR=`dirname $0`          
+
+# 이전 MySQL 백업 삭제
+rm -f $BACKUP_DIR/*.sql.gz
+
 # MySQL 백업
 DB_LIST=$($DB_BIN/mysql -u $DB_USER --password=$DB_PASS -h $DB_HOST -e "SHOW DATABASES;" | grep -Ev "(Database|information_schema|performance_schema)")
 if [ "$?" != "0" ]; then
@@ -49,7 +58,7 @@ for db in $DB_LIST
 do
   $DB_BIN/mysqldump -u $DB_USER --password=$DB_PASS -h $DB_HOST \
   --default-character-set=utf8 --opt --skip-lock-tables --single-transaction -Q -B $db \
-  | gzip > $db.sql.gz
+  | gzip > $BACKUP_DIR/$db.sql.gz
   if [ "$?" != "0" ]; then
     php79_error "[ $db ] mysqldump 작업이 실패하였습니다."
   fi

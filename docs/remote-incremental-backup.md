@@ -33,21 +33,21 @@
 백업 보관 디렉토리에 백업 스크립트를 다운로드 받습니다.
 
 ```
-# curl -s -o php79-mysql-backup.sh https://raw.githubusercontent.com/php79/backup/master/php79-mysql-backup.sh
+# curl -s -o php79-remote-mysql-backup.sh https://raw.githubusercontent.com/php79/backup/master/php79-remote-mysql-backup.sh
 ```
 
 MySQL root 비밀번호가 기록되므로, 접근 권한을 제한합니다.
 
 ```
-# chmod 700 php79-mysql-backup.sh
+# chmod 700 php79-remote-mysql-backup.sh
 ```
 
 백업 스크립트를 열어 디비 접속정보 등을 수정합니다.
 
 ```
-# vi php79-mysql-backup.sh
+# vi php79-remote-mysql-backup.sh
 
-# 증분 백업시, MySQL 백업 설정
+# rsnapshot 원격 증분 백업시, MySQL 백업 설정
 DB_USER='root'              # MySQL 사용자.  모든 디비를 백업하려면 root 계정 필요(기본값)
 DB_PASS='MySQLRootPassword' # MySQL 비밀번호.
 DB_HOST='localhost'         # MySQL 서버 주소.  별도 서버에 분리되지 않았다면 로컬 서버는 localhost 입력.
@@ -62,7 +62,7 @@ MySQL 백업이 정상적으로 이루어지는지 테스트해봅니다.
 
 ```
 # mkdir php79-tmp && cd php79-tmp
-# ../php79-mysql-backup.sh
+# ../php79-remote-mysql-backup.sh
 # ls -lth
 
 total 140K
@@ -159,7 +159,7 @@ backup	/etc/	localhost/
 
 ### REMOTE
 # server1 - ip: 192.168.0.101, ssh port: 22
-backup_script	/usr/bin/ssh root@192.168.0.101 "/home/.mysql-backup/php79-mysql-backup.sh"	server1/.remote-mysql-backup
+backup_script	/usr/bin/ssh root@192.168.0.101 "/home/.mysql-backup/php79-remote-mysql-backup.sh"	server1/.remote-mysql-backup
 backup	root@192.168.0.101:/home/	server1/	+rsync_long_args=--bwlimit=4096
 backup	root@192.168.0.101:/etc/	server1/	+rsync_long_args=--bwlimit=4096
 #backup	root@192.168.0.101:/usr/local/	server1/	+rsync_long_args=--bwlimit=4096
@@ -169,7 +169,7 @@ backup	root@192.168.0.101:/root/	server1/	+rsync_long_args=--bwlimit=4096
 backup	root@192.168.0.101:/var/lib/mysql/	server1/	+rsync_long_args=--bwlimit=4096
 
 # server2 - ip: 192.168.0.102, ssh port: 2222
-backup_script	/usr/bin/ssh root@192.168.0.102 "/home/.mysql-backup/php79-mysql-backup.sh"	server2/.remote-mysql-backup
+backup_script	/usr/bin/ssh root@192.168.0.102 "/home/.mysql-backup/php79-remote-mysql-backup.sh"	server2/.remote-mysql-backup
 backup	root@192.168.0.102:/home/	server2/	+rsync_long_args=--bwlimit=4096,+ssh_args=-p 2222
 backup	root@192.168.0.102:/etc/	server2/	+rsync_long_args=--bwlimit=4096,+ssh_args=-p 2222
 #backup	root@192.168.0.102:/usr/local/	server2/	+rsync_long_args=--bwlimit=4096,+ssh_args=-p 2222
@@ -333,12 +333,12 @@ monthly.0 - 최근 월단위 백업
 [20/Nov/2015:13:32:19] /usr/bin/rsnapshot daily: completed successfully
 ```
 
-> 운영 서버에서 실행되는 `php79-mysql-backup.sh`의 로그는 운영 서버에서 확인하셔야 합니다.
+> 운영 서버에서 실행되는 `php79-remote-mysql-backup.sh`의 로그는 운영 서버에서 확인하셔야 합니다.
 
 ```
 # grep php79 /var/log/messages
-Nov 20 17:37:48 localhost root: php79-backup info: /home/.mysql-backup/php79-mysql-backup.sh - started
-Nov 20 17:37:48 localhost root: php79-backup info: /home/.mysql-backup/php79-mysql-backup.sh - completed successfully
+Nov 20 17:37:48 localhost root: php79-backup info: /home/.mysql-backup/php79-remote-mysql-backup.sh - started
+Nov 20 17:37:48 localhost root: php79-backup info: /home/.mysql-backup/php79-remote-mysql-backup.sh - completed successfully
 ```
 
 

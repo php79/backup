@@ -65,7 +65,7 @@ MySQL root 비밀번호가 기록되므로, 접근 권한을 제한합니다.
 ```
 # vi php79-mysql-backup.sh
 
-# 증분 백업시, MySQL 백업 설정
+# rsnapshot 로컬 증분 백업시, MySQL 백업 설정
 DB_USER='root'              # MySQL 사용자.  모든 디비를 백업하려면 root 계정 필요(기본값)
 DB_PASS='MySQLRootPassword' # MySQL 비밀번호.
 DB_HOST='localhost'         # MySQL 서버 주소.  별도 서버에 분리되지 않았다면 로컬 서버는 localhost 입력.
