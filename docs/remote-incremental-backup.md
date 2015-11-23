@@ -179,9 +179,6 @@ backup	root@192.168.0.102:/root/	server2/	+rsync_long_args=--bwlimit=4096,+ssh_a
 backup	root@192.168.0.102:/var/lib/mysql/	server2/	+rsync_long_args=--bwlimit=4096,+ssh_args=-p 2222
 ```
 
-# TODO: 운영 서버의 php-mysql-backup.sh 실행후, 데이타 가져와야 함!
-
-
 > `+rsync_long_args=--bwlimit=4096`: 운영 장비의 디스크 I/O, 네트워크 대역폭을 고려하여, 최대 4MB/s 속도로 백업합니다.
 
 > `+ssh_args=-p 2222`: 운영 장비의 SSH 접속포트가 2222처럼 22가 아닐 경우, 별도로 선언해주어야 합니다.
