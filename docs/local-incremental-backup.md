@@ -87,6 +87,11 @@ total 140K
 -rw-r--r-- 1 root root  534 Nov 20 16:00 php79.sql.gz
 -rw-r--r-- 1 root root 133K Nov 20 16:00 mysql.sql.gz
 
+# gunzip -c *.sql.gz|more
+
+-- MySQL dump 10.15  Distrib 10.0.21-MariaDB, for Linux (x86_64)
+Ctrl + C
+
 # rm -f *.sql.gz && cd .. && rmdir php79-tmp
 ```
 
