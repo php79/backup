@@ -61,8 +61,7 @@ DB_BIN='/usr/bin'           # mysql, mysqldump 실행 파일의 경로.  기본 
 MySQL 백업이 정상적으로 이루어지는지 테스트해봅니다.
 
 ```
-# mkdir php79-tmp && cd php79-tmp
-# ../php79-remote-mysql-backup.sh
+# ./php79-remote-mysql-backup.sh
 # ls -lth
 
 total 140K
@@ -73,8 +72,6 @@ total 140K
 
 -- MySQL dump 10.15  Distrib 10.0.21-MariaDB, for Linux (x86_64)
 Ctrl + C
-
-# rm -f *.sql.gz && cd .. && rmdir php79-tmp
 ```
 
 
