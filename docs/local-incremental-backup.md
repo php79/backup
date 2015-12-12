@@ -249,7 +249,7 @@ monthly.0 - 최근 월단위 백업
 /etc/cron.d 에 백업 스케쥴을 다운로드 받으면, 매일/매주/매월 백업이 자동 실행됩니다.
 
 ```
-# curl -s -o /etc/cron.d/php79-rsnapshot https://raw.githubusercontent.com/php79/backup/master/php79-rsnapshot
+# curl -s -o /etc/cron.d/php79-rsnapshot https://raw.githubusercontent.com/php79/backup/master/cron.d/php79-rsnapshot
 ```
 
 백업 시작 시간은 아래 파일을 열어 변경하기만 하면 됩니다.  다음 백업부터 적용됩니다.
