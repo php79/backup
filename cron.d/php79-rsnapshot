@@ -1,4 +1,5 @@
 # Run backups - http://www.php79.com/
+# Version:: 1.0.1
 #
 # Example of job definition:
 # .---------------- minute (0 - 59)
