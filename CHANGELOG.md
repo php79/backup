@@ -1,5 +1,10 @@
 # php79 backup 변경 내역
 
+## v1.0.2 (2019-06-28)
+
+### Fixed
+- rsnapshot 백업 설정 예제 추가 https://github.com/php79/backup/issues/6
+
 ## v1.0.1 (2016-11-05)
 
 ### Fixed
