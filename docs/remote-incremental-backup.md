@@ -161,6 +161,7 @@ backup	root@192.168.0.101:/home/	server1/	+rsync_long_args=--bwlimit=4096
 backup	root@192.168.0.101:/etc/	server1/	+rsync_long_args=--bwlimit=4096
 #backup	root@192.168.0.101:/usr/local/	server1/	+rsync_long_args=--bwlimit=4096
 #backup	root@192.168.0.101:/opt/	server1/	+rsync_long_args=--bwlimit=4096
+#backup	root@192.168.0.101:/var/spool/cron/	server1/	+rsync_long_args=--bwlimit=4096
 backup	root@192.168.0.101:/root/	server1/	+rsync_long_args=--bwlimit=4096
 #backup	root@192.168.0.101:/var/named/	server1/	+rsync_long_args=--bwlimit=4096
 backup	root@192.168.0.101:/var/lib/mysql/	server1/	+rsync_long_args=--bwlimit=4096
@@ -171,6 +172,7 @@ backup	root@192.168.0.102:/home/	server2/	+rsync_long_args=--bwlimit=4096,+ssh_a
 backup	root@192.168.0.102:/etc/	server2/	+rsync_long_args=--bwlimit=4096,+ssh_args=-p 2222
 #backup	root@192.168.0.102:/usr/local/	server2/	+rsync_long_args=--bwlimit=4096,+ssh_args=-p 2222
 #backup	root@192.168.0.102:/opt/	server2/	+rsync_long_args=--bwlimit=4096,+ssh_args=-p 2222
+#backup	root@192.168.0.102:/var/spool/cron/	server2/	+rsync_long_args=--bwlimit=4096,+ssh_args=-p 2222
 backup	root@192.168.0.102:/root/	server2/	+rsync_long_args=--bwlimit=4096,+ssh_args=-p 2222
 #backup	root@192.168.0.102:/var/named/	server2/	+rsync_long_args=--bwlimit=4096,+ssh_args=-p 2222
 backup	root@192.168.0.102:/var/lib/mysql/	server2/	+rsync_long_args=--bwlimit=4096,+ssh_args=-p 2222

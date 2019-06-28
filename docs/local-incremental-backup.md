@@ -158,6 +158,7 @@ backup	/home/	localhost/
 backup	/etc/	localhost/
 #backup	/usr/local/	localhost/
 #backup	/opt/	localhost/
+backup	/var/spool/cron/	localhost/
 backup	/root/	localhost/
 #backup	/var/named/	localhost/
 backup	/var/lib/mysql/	localhost/
